@@ -46,8 +46,9 @@ func (p *Pomodoro) Run() {
           p.Reset()
           p.ticking.Set("loops", 1 << 10)
           p.ticking.Call("play")
-          p.IsRinging = true
+          p.IsRinging = false
           p.isTicking = true
+          qml.Changed(p, &p.IsRinging)
           go func() {
             for p.isTicking {
               time.Sleep(time.Second)
@@ -62,11 +63,13 @@ func (p *Pomodoro) Run() {
           p.ringing.Call("stop")
           p.IsRinging = false
           p.isTicking = false
+          qml.Changed(p, &p.IsRinging)
         case Ring:
           p.ringing.Set("loops", 1 << 10)
           p.ringing.Call("play")
           p.IsRinging = true
           p.isTicking = false
+          qml.Changed(p, &p.IsRinging)
       }
     }
   }()
