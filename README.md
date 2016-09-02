@@ -1,3 +1,4 @@
+*WARNING: This doesn't compile with go 1.6 or above*
 go-qml-pomodoro
 ===============
 
