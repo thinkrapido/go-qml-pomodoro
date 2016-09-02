@@ -7,7 +7,7 @@ import (
 
   "gopkg.in/qml.v1"
 
-  state "github.com/thinkrapido/go-statemachine/state"
+  state "github.com/thinkrapido/go-statemachine"
 )
 
 const (
@@ -18,12 +18,12 @@ const (
 
 type Pomodoro struct {
   state.Machine
-  
+
   ringing qml.Object
   ticking qml.Object
-  
+
   Countdown string
-  
+
   timer int32
   timerDefault int32
 
